@@ -1,0 +1,89 @@
+{
+  "name": "editor-playground",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/editor-playground/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/editor-playground",
+        "index": "apps/editor-playground/src/index.html",
+        "baseHref": "/",
+        "main": "apps/editor-playground/src/main.tsx",
+        "tsConfig": "apps/editor-playground/tsconfig.app.json",
+        "assets": [
+          "apps/editor-playground/src/favicon.ico",
+          "apps/editor-playground/src/assets"
+        ],
+        "styles": ["apps/editor-playground/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/editor-playground/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/editor-playground/src/environments/environment.ts",
+              "with": "apps/editor-playground/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "editor-playground:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "editor-playground:build:development"
+        },
+        "production": {
+          "buildTarget": "editor-playground:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/editor-playground/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/editor-playground/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
