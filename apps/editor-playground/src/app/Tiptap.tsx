@@ -2,23 +2,21 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 
 import StarterKit from '@tiptap/starter-kit'
-import { CustomNode } from '@dotcms-block-editor/custom-blocks'
-import { useEffect } from 'react'
+import { CustomNode, CustomExtension } from '@dotcms-block-editor/custom-blocks'
+
 
 const Tiptap = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      CustomNode
+      CustomNode,
+      CustomExtension
     ],
   })
 
   return (
     <div className="editor-container">
       <EditorContent editor={editor} />
-      <button
-        onClick={() => editor?.chain().addHelloWorld().run()}
-      >Click Me</button>
     </div>
   )
 }
