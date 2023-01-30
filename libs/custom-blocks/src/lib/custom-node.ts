@@ -1,22 +1,48 @@
 import { mergeAttributes, Node } from '@tiptap/core';
 
+declare module "@tiptap/core" {
+    interface Commands<ReturnType> {
+        CustomNode: {
+            addHelloWorld: () => ReturnType;
+        };
+    }
+}
+
 export const CustomNode = Node.create({
     name: 'helloWorld',
 
-    group: 'block',
-
-    content: 'inline',
+    addAttributes() {
+        return {};
+    },
 
     parseHTML() {
         return [
             {
-                tag: 'hellow-world'
+                tag: 'video'
             }
         ];
     },
 
-    renderHTML({ HTMLAttributes }) {
-        return ['hellow-world', mergeAttributes(HTMLAttributes), 0];
+    addOptions() {
+        return {
+            inline: false
+        };
+    },
+
+    inline() {
+        return this.options.inline;
+    },
+
+    group() {
+        return 'block';
+    },
+
+    addCommands() {
+        return {
+            addHelloWorld: () => ({ commands }: any) => {
+                return  commands.insertContent({ type: this.name });
+            }
+        }
     },
 
     addNodeView() {
