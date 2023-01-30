@@ -40,37 +40,13 @@ export class CustomPluginView {
     public tippy: Instance | undefined
 
     public shouldShow: Exclude<BubbleMenuPluginProps['shouldShow'], null> = ({
-        view,
         state,
-        from,
-        to,
     }) => {
         const { doc, selection } = state
-        const { empty } = selection
+        const { head } = selection;
+        const isEmptyLine = doc.resolve(head).parent.content.size == 0
 
-        // Sometime check for `empty` is not enough.
-        // Doubleclick an empty paragraph returns a node size of 2.
-        // So we check also for an empty text size.
-        const isEmptyTextBlock = !doc.textBetween(from, to).length
-            && isTextSelection(state.selection)
-
-        // When clicking on a element inside the bubble menu the editor "blur" event
-        // is called and the bubble menu item is focussed. In this case we should
-        // consider the menu as part of the editor and keep showing the menu
-        const isChildOfMenu = this.element.contains(document.activeElement)
-
-        const hasEditorFocus = view.hasFocus() || isChildOfMenu
-
-        if (
-            !hasEditorFocus
-            || empty
-            || isEmptyTextBlock
-            || !this.editor.isEditable
-        ) {
-            return false
-        }
-
-        return true
+        return isEmptyLine;
     }
 
     constructor({
@@ -106,7 +82,7 @@ export class CustomPluginView {
             content: this.element,
             interactive: true,
             trigger: 'manual',
-            placement: 'top',
+            placement: 'left',
             hideOnClick: 'toggle',
         })
     }
@@ -118,13 +94,8 @@ export class CustomPluginView {
     }
 
     updateHandler(view: EditorView, oldState: EditorState) {
-        const { state, composing } = view
-        const { doc, selection } = state
-        const isSame = oldState && oldState.doc.eq(doc) && oldState.selection.eq(selection)
-
-        if (composing || isSame) {
-            return
-        }
+        const { state } = view
+        const { selection } = state
 
         this.createTooltip()
 
