@@ -1,14 +1,12 @@
 import {
     Editor,
-    isNodeSelection,
-    isTextSelection,
     posToDOMRect,
 } from '@tiptap/core'
 import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import tippy, { Instance, Props } from 'tippy.js'
 
-export interface BubbleMenuPluginProps {
+export interface CustomPluginProps {
     pluginKey: PluginKey | string,
     editor: Editor,
     element: HTMLElement,
@@ -24,7 +22,7 @@ export interface BubbleMenuPluginProps {
     }) => boolean) | null,
 }
 
-export type BubbleMenuViewProps = BubbleMenuPluginProps & {
+export type CustomPluginViewProps = CustomPluginProps & {
     view: EditorView,
 }
 
@@ -39,7 +37,7 @@ export class CustomPluginView {
 
     public tippy: Instance | undefined
 
-    public shouldShow: Exclude<BubbleMenuPluginProps['shouldShow'], null> = ({
+    public shouldShow: Exclude<CustomPluginProps['shouldShow'], null> = ({
         state,
     }) => {
         const { doc, selection } = state
@@ -54,11 +52,10 @@ export class CustomPluginView {
         element,
         view,
         shouldShow,
-    }: BubbleMenuViewProps) {
+    }: CustomPluginViewProps) {
         this.editor = editor
         this.element = element
         this.view = view
-        console.log("init")
         if (shouldShow) {
             this.shouldShow = shouldShow
         }
@@ -88,8 +85,6 @@ export class CustomPluginView {
     }
 
     update(view: EditorView, oldState: EditorState) {
-        //  const { state } = view
-        // const hasValidSelection = state.selection.$from.pos !== state.selection.$to.pos
         this.updateHandler(view, oldState)
     }
 
@@ -127,6 +122,6 @@ export class CustomPluginView {
     }
 
     destroy() {
-        //
+        this.tippy?.destroy()
     }
 }
