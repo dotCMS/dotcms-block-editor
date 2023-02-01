@@ -1,4 +1,4 @@
-import { mergeAttributes, Node } from '@tiptap/core';
+import { Node } from '@tiptap/core';
 
 declare module "@tiptap/core" {
     interface Commands<ReturnType> {
@@ -39,7 +39,7 @@ export const CustomNode = Node.create({
 
     addCommands() {
         return {
-            addHelloWorld: () => ({ commands }: any) => {
+            addHelloWorld: () => ({ commands }) => {
                 return  commands.insertContent({ type: this.name });
             }
         }
