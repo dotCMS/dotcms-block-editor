@@ -4,7 +4,6 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { CustomNode, CustomExtension, ItalicCustom } from '@dotcms-block-editor/custom-blocks'
 
-
 const Tiptap = () => {
   const editor = useEditor({
     extensions: [
