@@ -64,8 +64,8 @@ import {
   
     addKeyboardShortcuts() {
       return {
-        'Mod-i': () => this.editor.commands.toggleHighlight(),
-        'Mod-I': () => this.editor.commands.toggleHighlight(),
+        'Mod-u': () => this.editor.commands.toggleHighlight(),
+        'Mod-U': () => this.editor.commands.toggleHighlight(),
       }
     },
   
