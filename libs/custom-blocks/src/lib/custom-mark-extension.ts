@@ -5,25 +5,25 @@ import {
     mergeAttributes,
   } from '@tiptap/core'
   
-  export interface ItalicOptions {
+  export interface HighlightOptions {
     HTMLAttributes: Record<string, any>,
   }
   
   declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-      italicCustom: {
+      highlightCustom: {
         /**
          * Set an italic mark
          */
-        setItalic: () => ReturnType,
+        setHighlight: () => ReturnType,
         /**
          * Toggle an italic mark
          */
-        toggleItalic: () => ReturnType,
+        toggleHighlight: () => ReturnType,
         /**
          * Unset an italic mark
          */
-        unsetItalic: () => ReturnType,
+        unsetHighlight: () => ReturnType,
       }
     }
   }
@@ -33,43 +33,30 @@ import {
   export const underscoreInputRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))$/
   export const underscorePasteRegex = /(?:^|\s)((?:_)((?:[^_]+))(?:_))/g
   
-  export const ItalicCustom = Mark.create<ItalicOptions>({
-    name: 'italicCustom',
+  export const HighlightCustom = Mark.create<HighlightOptions>({
+    name: 'highlightCustom',
   
     addOptions() {
       return {
-        HTMLAttributes: {},
+        HTMLAttributes: {
+          style: `background-color: #FFFF00; padding: 5px;`,
+        },
       }
     },
   
-    parseHTML() {
-      return [
-        {
-          tag: 'em',
-        },
-        {
-          tag: 'i',
-          getAttrs: node => (node as HTMLElement).style.fontStyle !== 'normal' && null,
-        },
-        {
-          style: 'font-style=italic;',
-        },
-      ]
-    },
-  
     renderHTML({ HTMLAttributes }) {
-      return ['em', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
+      return ['span', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
     },
   
     addCommands() {
       return {
-        setItalic: () => ({ commands }) => {
+        setHighlight: () => ({ commands }) => {
           return commands.setMark(this.name)
         },
-        toggleItalic: () => ({ commands }) => {
+        toggleHighlight: () => ({ commands }) => {
           return commands.toggleMark(this.name)
         },
-        unsetItalic: () => ({ commands }) => {
+        unsetHighlight: () => ({ commands }) => {
           return commands.unsetMark(this.name)
         },
       }
@@ -77,8 +64,8 @@ import {
   
     addKeyboardShortcuts() {
       return {
-        'Mod-i': () => this.editor.commands.toggleItalic(),
-        'Mod-I': () => this.editor.commands.toggleItalic(),
+        'Mod-i': () => this.editor.commands.toggleHighlight(),
+        'Mod-I': () => this.editor.commands.toggleHighlight(),
       }
     },
   

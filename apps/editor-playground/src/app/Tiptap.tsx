@@ -2,7 +2,7 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 
 import StarterKit from '@tiptap/starter-kit'
-import { CustomNode, CustomExtension, ItalicCustom } from '@dotcms-block-editor/custom-blocks'
+import { CustomNode, CustomExtension, HighlightCustom } from '@dotcms-block-editor/custom-blocks'
 
 const Tiptap = () => {
   const editor = useEditor({
@@ -10,11 +10,11 @@ const Tiptap = () => {
       StarterKit,
       CustomNode,
       CustomExtension,
-      ItalicCustom
+      HighlightCustom
     ],
     content: `
-      <p><em>This is italic.</em></p>
-      <p><i>And this.</i></p>
+      <p>This is content.</p>
+      <p>And this.</p>
     `,
   })
 
@@ -22,10 +22,9 @@ const Tiptap = () => {
     <div className="editor-container">
 
       <button
-        onClick={() => editor?.chain().focus().toggleItalic().run()}
-        className={editor?.isActive('italic') ? 'is-active' : ''}
+        onClick={() => editor?.chain().focus().toggleHighlight().run()}
       >
-        Toggle Italic
+        Toggle Highlight: {editor?.isActive('italic') ? 'On' : 'Off'}
       </button>
 
       <EditorContent editor={editor} />
