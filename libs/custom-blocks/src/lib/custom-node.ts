@@ -18,7 +18,7 @@ export const CustomNode = Node.create({
     parseHTML() {
         return [
             {
-                tag: 'video'
+                tag: ''
             }
         ];
     },
@@ -48,27 +48,27 @@ export const CustomNode = Node.create({
     addNodeView() {
         return () => {
             const dom = document.createElement('div');
-            dom.contentEditable = 'false';
-
-            // Styles
-            dom.style.padding = '4px';
-            dom.style.background = "#f9dc5c";
-            dom.style.borderRadius = '5px'
-            dom.style.border = '2px solid #333'
-
+            dom.contentEditable = 'true';
             const label = document.createElement('label');
 
             label.innerHTML = 'Hello World';
-            label.contentEditable = 'false';
+            label.contentEditable = 'true'; 
             
             // Styles
             label.style.fontWeight = 'bold';
             label.style.fontSize = '25px';
             label.style.paddingBottom = '10px';
 
+            // Styles
+            dom.style.padding = '4px';
+            dom.style.background = "#f9dc5c";
+            dom.style.borderRadius = '5px';
+            dom.style.border = '2px solid #333';
+            dom.style.marginBottom = '10px';
+
             dom.append(label);
 
             return { dom };
         };
-    }
+    },
 });

@@ -1,5 +1,5 @@
 import { Extension } from '@tiptap/core';
-import { EditorState, Plugin, PluginKey } from 'prosemirror-state'
+import { Plugin, PluginKey } from 'prosemirror-state'
 import { CustomPluginView } from './custom-plugin';
 
 
@@ -16,7 +16,7 @@ export const CustomExtension = Extension.create({
     addProseMirrorPlugins() {
         const button = document.createElement("button");
         button.innerText = "Add";
-        button.onclick = () => this.editor.commands.addHelloWorld()
+        button.onclick = () => this.editor.commands.addHelloWorld();
         return [
             CustomPlugin({
                 pluginKey: this.options.pluginKey,
