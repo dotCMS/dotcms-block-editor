@@ -5,9 +5,11 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import { join } from 'path';
 
-export default defineConfig({
+export default defineConfig({ 
   cacheDir: '../../node_modules/.vite/custom-blocks',
-
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production')
+  },
   plugins: [
     dts({
       tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
@@ -39,7 +41,7 @@ export default defineConfig({
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.

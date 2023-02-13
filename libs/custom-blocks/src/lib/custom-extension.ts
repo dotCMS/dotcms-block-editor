@@ -16,6 +16,12 @@ export const CustomExtension = Extension.create({
     addProseMirrorPlugins() {
         const button = document.createElement("button");
         button.innerText = "Add";
+        button.style.position = 'absolute';
+        button.style.top = '-50px';
+        button.style.left = '-33px';
+        button.style.border = '0';
+        button.style.padding = '5px';
+
         button.onclick = () => this.editor.commands.addHelloWorld();
         return [
             CustomPlugin({
