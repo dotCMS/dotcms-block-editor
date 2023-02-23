@@ -9,7 +9,7 @@ declare module "@tiptap/core" {
 }
 
 export const CustomNode = Node.create({
-    name: 'helloWorld',
+    name: 'customNode',
 
     addAttributes() {
         return {};
@@ -18,14 +18,18 @@ export const CustomNode = Node.create({
     parseHTML() {
         return [
             {
-                tag: ''
+                tag: 'div'
             }
         ];
     },
 
+    renderHTML() {
+        return ['div']
+    },
+
     addOptions() {
         return {
-            inline: false
+            inline: false,
         };
     },
 
@@ -41,18 +45,18 @@ export const CustomNode = Node.create({
         return {
             addHelloWorld: () => ({ commands }) => {
                 return  commands.insertContent({ type: this.name });
-            }
+            }   
         }
     },
 
     addNodeView() {
         return () => {
             const dom = document.createElement('div');
-            dom.contentEditable = 'true';
+            dom.contentEditable = 'false';
             const label = document.createElement('label');
 
             label.innerHTML = 'Hello World';
-            label.contentEditable = 'true'; 
+            label.contentEditable = 'false'; 
             
             // Styles
             label.style.fontWeight = 'bold';

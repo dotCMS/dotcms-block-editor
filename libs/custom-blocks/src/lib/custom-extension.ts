@@ -4,7 +4,7 @@ import { CustomPluginView } from './custom-plugin';
 
 
 export const CustomExtension = Extension.create({
-    name: 'CustomExtension',
+    name: 'customExtension',
 
     addOptions() {
         return {
