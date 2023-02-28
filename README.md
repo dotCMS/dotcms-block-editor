@@ -121,4 +121,82 @@ const editor = useEditor({
 },
 ```
 
+## How to structure the JSON file with the custom extension parameters?
+
+
+1. Create an array with all the extensions and  the path for the file generated in the dist folder and uploaded into dotCMS and put it in the **URL** property.
+2. Add in the actions array every extension, mark or node created inside the file defines the **URL** property.
+3. **Name**  property should be the name for the extension in the extension definition.
+4. **MenuLabel** property is the one used to display in the context menu inside the block editor that triggers these actions.
+5. **Icon** property is the material-ui icon name that will be displayed in the context menu as well.
+
+```JSON
+{
+	"extensions": [{
+		"url": "http://localhost:8080/application/customBlocks.js",
+		"actions": [{
+			"name": "CustomExtension",
+			"command": "insertProduct",
+			"menuLabel": "Custom Extension",
+			"icon": "javascript"
+		}, {
+			"name": "HighlightCustom",
+			"command": "toggleHighlight",
+			"menuLabel": "Highlight Custom",
+			"icon": "highlight"
+		}, {
+			"name": "CustomNode",
+			"command": "addHelloWorld",
+			"menuLabel": "Custom Node",
+			"icon": "javascript"
+		}]
+	}]
+}
+```
+
+
+# Development mode 
+
+## How to work in development mode within the editor playground?
+
+Then it is possible to play around with new custom extensions within the playground inside the libs folder. Add the code, and it will be automatically refreshed in the browser.
+
+
+![image6](https://user-images.githubusercontent.com/3438705/221927152-26ea09d0-a78f-4f2e-b607-92557e2a709c.png)
+
+## How to run the playground?
+
+Once the custom extension has been created and added in the Block editor initialization, there is a Block Editor playground to see the new extensions.
+
+
+```Javascript
+npx run editor-playground:serve:development
+```
+
+![image1](https://user-images.githubusercontent.com/3438705/221927998-0c2c2c9f-575a-47ee-ab81-45330e5ef1fd.png)
+
+
+## FAQ
+
+1. What is a block editor, and how does it work?
+
+Block Editor is a toolkit for building rich text WYSIWYG ("What You See Is What You Get"), as part of the rich content it allows you to insert different kinds of content like images, videos, tables, code blocks and others into your text area. 
+
+2. What is ProseMirror?
+
+ProseMirror tries to bridge the gap between editing explicit, unambiguous content like Markdown or XML, and classical WYSIWYG editors.
+It does this by implementing a WYSIWYG-style editing interface for documents more constrained and structured than plain HTML. it can customize the shape and structure of the documents your editor creates, and tailor them to your application's needs.
+
+3. What is Tiptap?
+
+Tiptap gives full control over every single aspect of the text editor experience. It’s customizable, comes with a ton of extensions, is open source and has extensive documentation. 
+
+4. Nx for building
+
+Nx is a smart, fast and extensible build system with first class monorepo support and powerful integrations.
+We recommend installing the Visual Code extension, Nx Console
+
+5. Where to find the Material UI Icons?
+
+Material UI Icons can be found here: https://fonts.google.com/icons and add the icon name in the JSON file property. 
 
