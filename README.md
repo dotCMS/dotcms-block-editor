@@ -39,4 +39,86 @@ Run the following command:
 npx nx build custom-blocks 
 ```
 
+This will generate the dist folder with the index.js inside, which contains all the extensions defined in the custom-blocks folder.
+
+4. Get the file in dist/libs/custom-blocks
+
+After running the previous command, it should generate a folder structure like the one below.
+
+
+<img width="311" alt="image4" src="https://user-images.githubusercontent.com/3438705/221910014-847f4621-fdea-4e45-916d-41fa64499c64.png">
+
+And that is, you have your first extension, now you can upload it to your dotCMS instance.
+
+
+## How to add the extension to a dotCMS block editor field?
+
+After the index.js has been generated, it needs to be uploaded to the file directory by clicking on “Add” button; we do recommend renaming the file to something meaningful like in our example, customBlocks.js
+
+
+![image5](https://user-images.githubusercontent.com/3438705/221911288-8ab460ee-0729-4225-9f33-e28032658476.png)
+
+Once the file is uploaded, go to the Block editor field variables and include the new variable **customBlocks** (It needs to be called this way) that will be picked up by the dotCMS Block editor to read from there any new custom variables, as displayed in the image below we do send a JSON file with the parameters to define where to find the custom extensions options. 
+
+
+![image2](https://user-images.githubusercontent.com/3438705/221912074-2d45050c-3cff-4b56-bd36-41a0e6c67db4.png)
+
+
+After adding into dotCMS you should see the examples displayed below.
+
+![image3](https://user-images.githubusercontent.com/3438705/221912365-50251293-0b23-439b-ae26-aece15ec75f3.png)
+
+
+## How to create my own custom extensions?
+
+By building custom extensions, you can add new blocks and new functionalities, on top of what already exists or from scratch. 
+The GitHub repository dotcms-block-editor contains examples for building extensions, nodes and marks. 
+
+
+Create the initial skeleton, as the following example shows:
+
+```Javascript
+import { Node } from '@tiptap/core'
+const CustomNode = Node.create({
+  name: 'customNode',
+  // Your code goes here, for example:
+addNodeView() {
+    return () => {
+        const dom = document.createElement('div');
+        dom.contentEditable = 'false';
+        const label = document.createElement('label');
+        dom.append(label);
+        return { dom };
+    };
+ },
+})
+```
+
+
+2. It is possible to add commands which triggers the extension into the Block Editor:
+
+```Javascript
+ addCommands() {
+        return {
+           addHelloWorld: () => ({ commands }) => {
+  return  commands.insertContent({ type: this.name });
+           }   
+        }
+    },
+    
+ ```
+ 
+ 
+ 3. Once the initial skeleton has been created, it needs to be added on the Editor initialization: 
+
+``` Javascript
+const editor = useEditor({
+    extensions: [
+      StarterKit,
+      CustomNode
+    ],
+  })
+},
+```
+
 
