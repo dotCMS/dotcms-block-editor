@@ -82,7 +82,7 @@ import { Node } from '@tiptap/core'
 const CustomNode = Node.create({
   name: 'customNode',
   // Your code goes here, for example:
-addNodeView() {
+  addNodeView() {
     return () => {
         const dom = document.createElement('div');
         dom.contentEditable = 'false';
@@ -90,7 +90,7 @@ addNodeView() {
         dom.append(label);
         return { dom };
     };
- },
+  },
 })
 ```
 
@@ -98,12 +98,12 @@ addNodeView() {
 2. It is possible to add commands which triggers the extension into the Block Editor:
 
 ```Javascript
- addCommands() {
-        return {
-           addHelloWorld: () => ({ commands }) => {
-  return  commands.insertContent({ type: this.name });
-           }   
-        }
+    addCommands() {
+      return {
+         addHelloWorld: () => ({ commands }) => {
+          return  commands.insertContent({ type: this.name });
+         }   
+      }
     },
     
  ```
@@ -112,13 +112,13 @@ addNodeView() {
  3. Once the initial skeleton has been created, it needs to be added on the Editor initialization: 
 
 ``` Javascript
-const editor = useEditor({
-    extensions: [
-      StarterKit,
-      CustomNode
-    ],
-  })
-},
+  const editor = useEditor({
+      extensions: [
+        StarterKit,
+        CustomNode
+      ],
+    })
+  },
 ```
 
 ## How to structure the JSON file with the custom extension parameters?
