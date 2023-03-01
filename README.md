@@ -72,7 +72,7 @@ After adding into dotCMS you should see the examples displayed below.
 ## How to create my own custom extensions?
 
 By building custom extensions, you can add new blocks and new functionalities, on top of what already exists or from scratch. 
-The GitHub repository dotcms-block-editor contains examples for building extensions, nodes and marks. 
+The GitHub repository `dotcms-block-editor` contains examples for building extensions, nodes and marks. 
 
 
 Create the initial skeleton, as the following example shows:
