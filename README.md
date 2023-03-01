@@ -71,9 +71,9 @@ After adding into dotCMS you should see the examples displayed below.
 
 ## How to create my own custom extensions?
 
-By building custom extensions, you can add new blocks and new functionalities, on top of what already exists or from scratch. 
-The GitHub repository `dotcms-block-editor` contains examples for building extensions, nodes and marks. 
+One of the strengths of [Tiptap](https://tiptap.dev/guide/custom-extensions#introduction) is its extendability. You don’t depend on the provided extensions, it is intended to extend the editor to your liking.
 
+With custom extensions you can add new content types and new functionalities, on top of what already exists or from scratch. Let’s start with a few common examples of how you can extend existing nodes, marks and extensions.
 
 Create the initial skeleton, as the following example shows:
 
