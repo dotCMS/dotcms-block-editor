@@ -41,7 +41,7 @@ npx nx build custom-blocks
 
 This will generate the dist folder with the index.js inside, which contains all the extensions defined in the custom-blocks folder.
 
-4. Get the file in dist/libs/custom-blocks
+4. Get the file in `dist/libs/custom-blocks`
 
 After running the previous command, it should generate a folder structure like the one below.
 
