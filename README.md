@@ -101,7 +101,7 @@ const CustomNode = Node.create({
     addCommands() {
       return {
          addHelloWorld: () => ({ commands }) => {
-          return  commands.insertContent({ type: this.name });
+            return  commands.insertContent({ type: this.name });
          }   
       }
     },
