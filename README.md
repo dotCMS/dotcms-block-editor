@@ -37,7 +37,7 @@ Follow these steps to expand the Block Editor's functionality by creating a new 
     
     This will generate the `/dist/` folder with a compiled Javascript `custom-blocks.js` file inside, which contains the extensions defined in the `custom-blocks` project library.
 
-4. Browse to `dist/libs/custom-blocks`
+4. Browse to `/dist/libs/custom-blocks`
     
     After running the previous command, it should generate a folder structure like the one below.
     
@@ -49,12 +49,13 @@ And just like that, you have a first extension. Now you can upload it to your do
 
 ## Adding the Extension to a dotCMS Block Editor Field
 
-Take a look inside the `dist/libs/custom-blocks` folder, and you'll see a compiled Javascript file, in this case named `custom-blocks.js`. (Its exact file name may differ as defined in the project files — specifically in the `fileName` property of `libs/{project}/vite.config.ts`. We recommend choosing a meaningful name!)
+Take a look inside the `/dist/libs/custom-blocks` folder, and you'll see a compiled Javascript file, in this case named `custom-blocks.js`. 
+
+(Its exact file name may differ as defined in the project files — specifically in the `fileName` property in `/libs/{project}/vite.config.ts`. We recommend choosing a meaningful name!)
 
 This file needs to be uploaded to a directory of your choice. Browse to that directory in the Site Browser — in this case, `/application/block-editor/extensions` — and then click the “Add” button.
 
 ![Screenshot of site browser with uploaded file.](https://user-images.githubusercontent.com/102264829/226002850-d90bf56c-d4b0-4f05-8b00-456bc76308d7.png)
-<!-- ![image5](https://user-images.githubusercontent.com/3438705/221911288-8ab460ee-0729-4225-9f33-e28032658476.png) -->
 
 Once the file is uploaded, go to the Block Editor field's settings within the Content Type, and browse to the tab displaying its field variables. Include the new variable `customBlocks` (case sensitive), which defines the remote extensions in use by the Block Editor. 
 
@@ -71,12 +72,10 @@ For its value, it requires a JSON object with the property `extensions`. Its val
 When added, the result should resemble the image below, which uses the parameters above. 
 
 ![Screenshot 2023-03-17 at 3 28 03 PM](https://user-images.githubusercontent.com/102264829/226007546-f61468b2-289f-44b4-acb9-e09f6f9d9a55.png)
-<!-- ![image2](https://user-images.githubusercontent.com/3438705/221912074-2d45050c-3cff-4b56-bd36-41a0e6c67db4.png) -->
 
 After setting this field variable, the Block Editor's behavior will change according to the extensions you've implemented. The example extension adds an "Add" button that creates a "Hello World" block, as seen below:
 
 ![Screenshot 2023-03-17 at 3 29 18 PM](https://user-images.githubusercontent.com/102264829/226009165-9501b6eb-e334-4fb8-be93-aea1881e0676.png)
-<!-- ![image3](https://user-images.githubusercontent.com/3438705/221912365-50251293-0b23-439b-ae26-aece15ec75f3.png) -->
 
 ### Adding Our Extension as a Custom Block
 
@@ -105,11 +104,11 @@ For example, if we replace the previous `customBlocks` JSON with this new value,
 }
 ```
 
-![Screenshot 2023-03-17 at 4 38 16 PM](https://user-images.githubusercontent.com/102264829/226042015-13ebc9d7-eaed-41f6-b740-af7185ea9517.png)
+![Screenshot of field variables dialog again, with new value.](https://user-images.githubusercontent.com/102264829/226042015-13ebc9d7-eaed-41f6-b740-af7185ea9517.png)
 
 ... this results in a brand new block in the block list, based on the above specifications:
 
-![Screenshot 2023-03-17 at 4 39 04 PM](https://user-images.githubusercontent.com/102264829/226042348-119ccc33-3767-49d9-a533-661825bf53a7.png)
+![Screenshot of new custom button inside the block list.](https://user-images.githubusercontent.com/102264829/226042348-119ccc33-3767-49d9-a533-661825bf53a7.png)
 
 Clicking this block creates the same golden "Hello World" box as earlier, as it invokes the same `addHelloWorld` function.
 
