@@ -51,7 +51,7 @@ And just like that, you have a first extension. Now you can upload it to your do
 
 Take a look inside the `/dist/libs/custom-blocks` folder, and you'll see a compiled Javascript file, in this case named `custom-blocks.js`. 
 
-(Its exact file name may differ as defined in the project files — specifically in the `fileName` property in `/libs/{project}/vite.config.ts`. We recommend choosing a meaningful name!)
+(Its exact file name may differ as defined in the project files — specifically, in the `fileName` property in `/libs/{project}/vite.config.ts`. We recommend choosing a meaningful name!)
 
 This file needs to be uploaded to a directory of your choice. Browse to that directory in the Site Browser — in this case, `/application/block-editor/extensions` — and then click the “Add” button.
 
