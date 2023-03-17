@@ -77,7 +77,7 @@ After setting this field variable, the Block Editor's behavior will change accor
 
 ![Screenshot 2023-03-17 at 3 29 18 PM](https://user-images.githubusercontent.com/102264829/226009165-9501b6eb-e334-4fb8-be93-aea1881e0676.png)
 
-### Adding Our Extension as a Custom Block
+### Adding the Extension as a Custom Block
 
 Suppose, instead of a button, you'd prefer for your extension to be selectable from the list of blocks. This can be achieved with just a small modifiction to the JSON we added to the Block Editor field variable.
 
