@@ -215,7 +215,7 @@ When you're satisfied with the output, then you can rebuild your JS file and re-
 
 1. **What is a Block Editor, and how does it work?**
     
-    Block Editor is a toolkit for building rich text in WYSIWYG ("What You See Is What You Get") fashion. Per "rich text," it allows you to insert different kinds of content like images, videos, tables, code blocks and more into your text area. 
+    The Block Editor is a tool for building rich text in WYSIWYG ("What You See Is What You Get") fashion. Per "rich text," it allows you to insert different kinds of content like images, videos, tables, code blocks and more into your text area. 
     
     Each new paragraph, table, etc., is stored as an element called a "block," which is a self-contained unit of pure JSON. This makes the Block Editor portable and highly tractable for use in both traditional (through a user interface) and headless (through an API) paradigms.
 
