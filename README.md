@@ -1,8 +1,10 @@
 <img src="https://dotcms.com/dA/99fe3769-d649/256w/dotcms.png" title="dotcms java content management system">
 
-# dotCMS Block Editor
+# dotCMS Block Editor: Remote Extensions
 
 [![remote-extension_cap](https://user-images.githubusercontent.com/102264829/226434749-a607e4de-560e-48b2-879f-0fe63a601963.jpg)](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
+
+[*(Click for video)*](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
 
 The Block Editor field in dotCMS is a rich content editor that allows you to create content in units called “blocks.” Every paragraph, image, code snippet, list, etc., is stored as block capable of being edited, drag-and-drop reordered, transformed, or deleted.
 
