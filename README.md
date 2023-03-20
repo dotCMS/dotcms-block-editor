@@ -2,9 +2,7 @@
 
 # dotCMS Block Editor: Remote Extensions
 
-[![remote-extension_cap](https://user-images.githubusercontent.com/102264829/226434749-a607e4de-560e-48b2-879f-0fe63a601963.jpg)](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
-
-[*(Click for video)*](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
+[![Still from video presentation, click to view.](https://user-images.githubusercontent.com/102264829/226443396-a99338dd-0baa-49cc-8a35-c0dccdefe1d6.jpg)](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
 
 The Block Editor field in dotCMS is a rich content editor that allows you to create content in units called “blocks.” Every paragraph, image, code snippet, list, etc., is stored as block capable of being edited, drag-and-drop reordered, transformed, or deleted.
 
@@ -112,7 +110,7 @@ For example, if we replace the previous `customBlocks` JSON with this new value,
 
 ... this results in a brand new block in the block list, based on the above specifications:
 
-![Screenshot of new custom button inside the block list.](https://user-images.githubusercontent.com/102264829/226042348-119ccc33-3767-49d9-a533-661825bf53a7.png)
+![Screenshot of new custom button inside the block list.](https://user-images.githubusercontent.com/102264829/226445118-2f772c6d-d634-48f8-a061-4517fe124a9b.png)
 
 Clicking this block creates the same golden "Hello World" box as earlier, as it invokes the same `addHelloWorld` function.
 
