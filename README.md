@@ -9,7 +9,7 @@ The Block Editor field in dotCMS is a rich content editor that allows you to cre
 By default, the Block Editor includes a variety of pre-defined block types, including Paragraphs, Headings, Lists, Images, and Tables. 
 (For more information, [see the documentation](https://www.dotcms.com/docs/latest/block-editor).)
 
-You can extend the capabilities of the Block Editor by creating extensions and including them in your dotCMS instance.
+In dotCMS 23.03 or later, you can also extend the capabilities of the Block Editor by creating extensions and including them in your dotCMS instance.
 
 ## Creating Remote Extensions
 
