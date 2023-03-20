@@ -243,4 +243,4 @@ When you're satisfied with the output, then you can rebuild your JS file and re-
 
 5. **Where can I find the Material UI Icons?**
     
-    The Material UI Icons can be found [in Google Fonts](https://fonts.google.com/icons?icon.set=Material+Icons). Add the icon name in the JSON file property. 
+    The Material UI Icons can be found [in Google Fonts](https://fonts.google.com/icons?icon.set=Material+Icons). Use the icon name as the value of the `icon` property in the `customBlocks` JSON. 
