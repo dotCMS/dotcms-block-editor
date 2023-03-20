@@ -125,10 +125,6 @@ In the event of a remote extension with multiple defined commands, adding multip
 			"menuLabel": "Custom Node",
 			"icon": "javascript"
 		}, {
-			"command": "insertProduct",
-			"menuLabel": "Custom Extension",
-			"icon": "javascript"
-		}, {
 			"command": "toggleHighlight",
 			"menuLabel": "Highlight Custom",
 			"icon": "highlight"
@@ -197,7 +193,7 @@ Lastly, once the initial skeleton has been created, it needs to be added at the 
 
 ### Working in Development Mode in the Editor Playground
 
-It is possible to play around with new custom extensions within the playground inside the `libs` folder. In this way, you can add code and update it live, automatically. The results can be viewed via `localhost`, as in the images below.
+You can experiment with developing custom extensions within the playground inside the `libs` folder. In this way, you can add or edit code and it will update live, automatically. The results can be viewed via `localhost`, as in the images below.
 
 ![Screenshot of VSCode initializing the playground.](https://user-images.githubusercontent.com/3438705/221927152-26ea09d0-a78f-4f2e-b607-92557e2a709c.png)
 
@@ -213,7 +209,7 @@ npx run editor-playground:serve:development
 
 The playground automatically updates until the command is terminated, either through closing the terminal or using the standard break command keys — `^C`, `Ctrl+C`, etc.
 
-When you're satisfied with the output, then rebuild your JS file and re-upload according to the above sections.
+When you're satisfied with the output, then you can rebuild your JS file and re-upload according to the above sections.
 
 ## FAQ
 
