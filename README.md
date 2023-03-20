@@ -4,10 +4,10 @@
 
 [![Still from video presentation, click to view.](https://user-images.githubusercontent.com/102264829/226443396-a99338dd-0baa-49cc-8a35-c0dccdefe1d6.jpg)](https://www.youtube.com/watch?v=u5Lx1UZfCK8)
 
-The Block Editor field in dotCMS is a rich content editor that allows you to create content in units called “blocks.” Every paragraph, image, code snippet, list, etc., is stored as block capable of being edited, drag-and-drop reordered, transformed, or deleted.
+The Block Editor field in dotCMS is a rich content editor that allows you to create content in units called “blocks.” Every paragraph, image, code snippet, list, etc., is stored as a block capable of being edited, drag-and-drop reordered, transformed, or deleted.
 
-By default, the Block Editor includes a variety of pre-defined blocks, including Paragraphs, Headings, Lists, Images, Tables and others. 
-[More information](https://www.dotcms.com/docs/latest/block-editor)
+By default, the Block Editor includes a variety of pre-defined block types, including Paragraphs, Headings, Lists, Images, and Tables. 
+(For more information, [see the documentation](https://www.dotcms.com/docs/latest/block-editor).)
 
 You can extend the capabilities of the Block Editor by creating extensions and including them in your dotCMS instance.
 
