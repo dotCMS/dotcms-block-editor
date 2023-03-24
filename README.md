@@ -237,11 +237,11 @@ When you're satisfied with the output, then you can rebuild your JS file and re-
     
     Tiptap does not provide a user interface, but offers robust tools for building your own. The Block Editor was built using these tools.
 
-4. What is Nx?
+4. **What is Nx?**
     
     > Nx is a smart, fast and extensible build system with first class monorepo support and powerful integrations. As seen in the examples above, Nx is used to build remote extensions.
     
-    For ease of working with Nx, we recommend installing the [Nx Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) VS Code extension.
+    For ease of working with [Nx](https://nx.dev/), we recommend installing the [Nx Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) VS Code extension.
 
 5. **Where can I find the Material UI Icons?**
     
