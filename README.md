@@ -121,7 +121,7 @@ In the event of a remote extension with multiple defined commands, adding multip
 ```json
 {
 	"extensions": [{
-		"url": "http://localhost:8080/application/customBlocks.js",
+		"url": "https://local.dotcms.site:8443/application/block-editor/extensions/custom-blocks.js",
 		"actions": [{
 			"command": "addHelloWorld",
 			"menuLabel": "Custom Node",
