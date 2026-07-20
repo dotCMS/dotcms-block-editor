@@ -13,7 +13,7 @@ const Tiptap = () => {
       HighlightCustom
     ],
     content: `
-      <p>This is content.</p>
+      <p><span data-highlight>This is highlighted content</span></p>
       <p>And this.</p>
     `,
   })
