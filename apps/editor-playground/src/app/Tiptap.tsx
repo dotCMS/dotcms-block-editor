@@ -12,6 +12,8 @@ const Tiptap = () => {
       CustomExtension,
       HighlightCustom
     ],
+    // `data-highlight` is parsed by the HighlightCustom mark (see its parseHTML),
+    // so the highlight is applied declaratively from the initial HTML content.
     content: `
       <p><span data-highlight>This is highlighted content</span></p>
       <p>And this.</p>

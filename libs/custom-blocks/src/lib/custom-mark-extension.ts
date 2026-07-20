@@ -44,6 +44,9 @@ export const HighlightCustom = Mark.create<HighlightOptions>({
     };
   },
 
+  // `data-highlight` lets the mark round-trip through HTML: renderHTML stamps
+  // the attribute and parseHTML matches it, so highlighted content survives a
+  // save/reload cycle (without a parseHTML rule the mark would be dropped on load).
   parseHTML() {
     return [{ tag: 'span[data-highlight]' }];
   },

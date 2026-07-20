@@ -60,6 +60,9 @@ export class CustomPluginView {
   }
 
   createTooltip() {
+    // TipTap v3 widened `options.element` to a union
+    // (Element | { mount: HTMLElement } | ((editor) => void) | null).
+    // This editor is always mounted from a plain DOM element, so narrow it back.
     const editorElement = this.editor.options.element as HTMLElement;
     const editorIsAttached = !!editorElement.parentElement;
 
