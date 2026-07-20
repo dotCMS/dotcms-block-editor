@@ -1,13 +1,18 @@
 import { Editor, posToDOMRect } from '@tiptap/core';
 import { EditorState, Plugin, PluginKey } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import tippy, { Instance, Props } from 'tippy.js';
+import {
+  computePosition,
+  flip,
+  offset,
+  shift,
+  type VirtualElement,
+} from '@floating-ui/dom';
 
 export interface CustomPluginProps {
   pluginKey: PluginKey | string;
   editor: Editor;
   element: HTMLElement;
-  tippyOptions?: Partial<Props>;
   updateDelay?: number;
   shouldShow?:
     | ((props: {
@@ -32,9 +37,7 @@ export class CustomPluginView {
 
   public view: EditorView;
 
-  public preventHide = false;
-
-  public tippy: Instance | undefined;
+  private isMounted = false;
 
   public shouldShow: Exclude<CustomPluginProps['shouldShow'], null> = ({
     state,
@@ -54,30 +57,51 @@ export class CustomPluginView {
       this.shouldShow = shouldShow;
     }
 
-    // Detaches menu content from its current parent
+    // The floating element is positioned by Floating UI, so it must be
+    // absolutely positioned and start hidden until the first show().
     this.element.remove();
+    this.element.style.position = 'absolute';
     this.element.style.visibility = 'visible';
+    this.element.style.display = 'none';
   }
 
-  createTooltip() {
+  // Append the floating element to the editor's document once it is attached.
+  private mount() {
     // TipTap v3 widened `options.element` to a union
     // (Element | { mount: HTMLElement } | ((editor) => void) | null).
     // This editor is always mounted from a plain DOM element, so narrow it back.
     const editorElement = this.editor.options.element as HTMLElement;
-    const editorIsAttached = !!editorElement.parentElement;
-
-    if (this.tippy || !editorIsAttached) {
+    if (this.isMounted || !editorElement?.parentElement) {
       return;
     }
 
-    this.tippy = tippy(editorElement, {
-      duration: 0,
-      getReferenceClientRect: null,
-      content: this.element,
-      interactive: true,
-      trigger: 'manual',
+    (editorElement.ownerDocument.body ?? document.body).appendChild(
+      this.element
+    );
+    this.isMounted = true;
+  }
+
+  private hide() {
+    this.element.style.display = 'none';
+  }
+
+  // Position the floating element next to the current selection using a
+  // virtual reference backed by the ProseMirror selection rect.
+  private show(from: number, to: number) {
+    const reference: VirtualElement = {
+      getBoundingClientRect: () => posToDOMRect(this.view, from, to),
+    };
+
+    this.element.style.display = '';
+
+    computePosition(reference, this.element, {
       placement: 'left',
-      hideOnClick: 'toggle',
+      middleware: [offset(8), flip(), shift({ padding: 8 })],
+    }).then(({ x, y }) => {
+      Object.assign(this.element.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
     });
   }
 
@@ -89,7 +113,7 @@ export class CustomPluginView {
     const { state } = view;
     const { selection } = state;
 
-    this.createTooltip();
+    this.mount();
 
     // support for CellSelections
     const { ranges } = selection;
@@ -106,19 +130,14 @@ export class CustomPluginView {
     });
 
     if (!shouldShow) {
-      this.tippy?.hide();
+      this.hide();
       return;
     }
 
-    this.tippy?.setProps({
-      getReferenceClientRect: () => {
-        return posToDOMRect(view, from, to);
-      },
-    });
-    this.tippy?.show();
+    this.show(from, to);
   }
 
   destroy() {
-    this.tippy?.destroy();
+    this.element.remove();
   }
 }
