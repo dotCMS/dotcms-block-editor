@@ -53,11 +53,12 @@
     "vitest": "^0.25.8"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.8.0",
     "@nrwl/web": "^15.6.3",
-    "@tiptap/core": "^2.0.0-beta.209",
-    "@tiptap/react": "^2.0.0-beta.209",
-    "@tiptap/starter-kit": "^2.0.0-beta.209",
-    "@tiptap/vue-2": "^2.0.0-beta.209",
+    "@tiptap/core": "3.28.0",
+    "@tiptap/react": "3.28.0",
+    "@tiptap/starter-kit": "3.28.0",
+    "@tiptap/vue-2": "3.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0"

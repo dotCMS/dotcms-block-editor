@@ -11,6 +11,10 @@ By default, the Block Editor includes a variety of pre-defined block types — i
 
 In **dotCMS 23.03** or later, you can also extend the capabilities of the Block Editor by creating extensions and including them in your dotCMS instance.
 
+> ### ⚠️ TipTap version compatibility
+>
+> Remote extensions run **inside dotCMS's own Block Editor**, so the TipTap major version you build against must match the one shipped by your dotCMS release. Recent dotCMS versions moved the Block Editor to **TipTap v3** (`@tiptap/* 3.22.2`), and this example is pinned to a compatible 3.x release. An extension built against TipTap v2 will **not register** in a v3 Block Editor (and vice versa): your nodes/marks are silently dropped, and opening previously‑saved content throws `RangeError: Unknown node type`.
+
 ## Creating Remote Extensions
 
 Follow these steps to expand the Block Editor's functionality by creating a new remote extension with a pre-generated example. 
@@ -38,6 +42,12 @@ Follow these steps to expand the Block Editor's functionality by creating a new 
     ```
     
     This will generate the `/dist/` folder with a compiled Javascript `custom-blocks.js` file inside, which contains the extensions defined in the `custom-blocks` project library.
+
+    > ### ⚠️ The bundle must be self-contained
+    >
+    > dotCMS loads each remote extension with a **native browser `import(url)`** — there is no import map, module loader, or shared TipTap instance on the page. The compiled file **must therefore bundle all of its dependencies** (TipTap, ProseMirror, `tippy.js`, etc.).
+    >
+    > Do **not** mark `@tiptap/*` or `prosemirror-*` as `external` in `vite.config.ts` (keep `rollupOptions.external: []`). If you externalize them, the bare `import ... from "@tiptap/core"` statements cannot be resolved at runtime, the module fails to load, and your blocks silently never register.
 
 4. Browse to `/dist/libs/custom-blocks`
     
@@ -204,7 +214,7 @@ You can experiment with developing custom extensions within the playground insid
 Once the custom extension has been created and added in the Block Editor initialization, run the Block Editor playground using the following command:
 
 ```bash
-npx run editor-playground:serve:development
+npx nx run editor-playground:serve:development
 ```
 
 ![Screenshot of the playground output in a browser.](https://user-images.githubusercontent.com/3438705/221927998-0c2c2c9f-575a-47ee-ab81-45330e5ef1fd.png)

@@ -5,10 +5,10 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import { join } from 'path';
 
-export default defineConfig({ 
+export default defineConfig({
   cacheDir: '../../node_modules/.vite/custom-blocks',
   define: {
-    'process.env.NODE_ENV': JSON.stringify('production')
+    'process.env.NODE_ENV': JSON.stringify('production'),
   },
   plugins: [
     dts({
@@ -44,7 +44,8 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
+      // dotCMS loads this file as a self-contained remote extension and does
+      // NOT provide TipTap/ProseMirror to it, so everything must be bundled in.
       external: [],
     },
   },
